@@ -26,7 +26,19 @@ class ViewController: UIViewController {
 
     @IBAction func keyPressed(_ sender: UIButton) {
         let pitch = sender.currentTitle!
+        print("Start")
         playSound(pitch: pitch)
+        // dim the button over 0.2s
+        UIView.animate(withDuration: 0.2,
+        animations: {
+            sender.alpha = 0.5
+        },
+                       completion: { finished in
+            UIView.animate(withDuration: 0.2, animations: {
+                sender.alpha = 1.0
+            })
+        })
+        print("End")
     }
     
     func playSound(pitch: String) {
